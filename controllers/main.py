@@ -2,6 +2,7 @@ from odoo import http
 from odoo.http import request
 
 
+
 # class MyWebsiteController(http.Controller):
 
 #     @http.route('/web/signup?', type='http', auth="user", website=True)
@@ -18,12 +19,10 @@ from odoo.http import request
 
 
 class WebsiteController(http.Controller):
-
-    @http.route('/web/signup?', type='http', auth="public", website=True)
-    def your_route(self, **kw):
-        volunteer_skills = request.env['ngo-modul'].search([]).mapped('volunteer_skills')
-        return http.request.render('ngo-modul.res_partner', {'volunteer_skills': volunteer_skills})
-
+    @http.route('/web/signup', type='http', auth="public", website=True)
+    def web_auth_signup(self, *args, **kw):
+        volunteer_skills = request.env['volunteer.skills'].sudo().search([])
+        return http.request.render('ngo-modul.auth_signup_fields_inherited', {'volunteer_skills': volunteer_skills})
 
 
 
