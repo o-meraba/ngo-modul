@@ -20,7 +20,8 @@ from odoo.http import request
 
 class WebsiteController(http.Controller):
     @http.route('/web/signup', type='http', auth="public", website=True)
-    def web_auth_signup(self, *args, **kw):
+    def test(self, *args, **kw):
+        print("testsss")
         volunteer_skills = request.env['volunteer.skills'].sudo().search([])
         return http.request.render('ngo-modul.auth_signup_fields_inherited', {'volunteer_skills': volunteer_skills})
 

@@ -1,20 +1,23 @@
 <odoo>
     <data>
-        <template id="auth_signup_fields_inherited" inherit_id="auth_signup.fields"> 
-             <xpath expr="//div[@class='form-group field-confirm_password']" position="after">
+        <template id="auth_signup_fields_inherited" inherit_id="auth_signup.signup"> 
+             <xpath expr="//div[@class='text-center oe_login_buttons pt-3']" position="before">
                 <div class="form-group field-phone">
                     <label for="phone">Phone</label>
                     <input type="char" name="phone" id="phone" class="form-control form-control-sm" required="required"/>
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label for="volunteer_skills" class="control-label">Yetenekler</label>
-                    <select name="volunteer_skills" id="volunteer_skills" class="form-control link-style" widget="many2many_tags" >
+                    <!-- <field name="volunteer_skills" options="{'no_create': True}"/> -->
+
+
+                    <select name="volunteer_skills" id="volunteer_skills" class="js-example-basic-multiple col-xl-6 mb-1 new-get_data" multiple="multiple" >
                         
                         <t t-foreach="volunteer_skills" t-as="skill">
                             <option t-att-value="skill.id" t-esc="skill.name" />
                         </t>
-                    </select>
-                </div> -->
+                    </select> 
+                </div>
             </xpath>
         </template>
     </data>
